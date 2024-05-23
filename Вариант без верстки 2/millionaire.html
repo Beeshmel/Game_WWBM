@@ -1,0 +1,71 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кто хочет стать миллионером?</title>
+</head>
+<body> -->
+    <script>
+        class question{
+            constructor (question, anwers, rightAnswer, money){
+                this.question = question;
+                this.anwers = anwers;
+                this.rightAnswer = rightAnswer;
+                this.money = money;
+            }
+        }        
+        question1 = new question('Хранительницей чего, испокон веков считается женщина?',
+                                ["А: Очага", "\nВ: Крова", "\nС: Гнезда", "\nD: Плиты"],
+                                'A',
+                                100); 
+        question2 = new question('Каких денег не бывает?',
+                                ["А: Рубли", "\nВ: Юани", "\nС: Фрунки", "\nD: Лиры"],
+                                'C',
+                                200);
+        question3 = new question('К какому отряду биологи относят мышь?',
+                                ["А: Щелкунчики", "\nВ: Норушки", "\nС: Пискуны", "\nD: Грызуны"],
+                                'D',
+                                300);
+        question4 = new question('Какой мифологический персонаж превращал в золото все, чего касался?',
+                                ["А: Сизар", "\nВ: Мидас", "\nС: Зевс", "\nD: Дамокл"],
+                                'B',
+                                500);
+        question5 = new question('Куда не советует садится известная пословица?',
+                                ["А: Не на свою диету", "\nВ: Не в свою лужу", "\nС: Не в свои сани", "\nD: Не на свою мель"],
+                                'C',
+                                1000);
+        question6 = new question('Какие грамоты вручают главе государства вновь прибывшие иностранные послы?',
+                                ["А: Охранные", "\nВ: Почетные", "\nС:Китайские", "\nD: Верительные"],
+                                'D',
+                                2000); 
+        question7 = new question('Чем Давид поразил Голиафа?',
+                                ["А: Камнем", "\nВ: Хорошими манерами", "\nС: Красотой", "\nD: Пением"],
+                                'A',
+                                3000);
+
+        let questions = [question1, question2, question3, question4,// вопросы
+                        question5, question6, question7]; 
+        let prize = 0; //выигрыш
+        let userAnswer; // ответ пользователя
+        alert('Добро пожаловать в beta-версию игры "Кто хочет стать миллионером?"\nДля ответа введите латинскую букву.');
+        for(let i=0; i<questions.length; i++){
+            userAnswer = prompt(questions[i].question + '\n' + questions[i].anwers);  // вывод вопроса и вариантов ответа          
+            if(userAnswer != null){
+                if(userAnswer.toLowerCase() === questions[i].rightAnswer.toLowerCase()){ // сравнение ответов
+                    prize += questions[i].money;
+                    alert( (i==questions.length-1)? "Вопросы закончились.\nВы победили!\nВаш выигрыш: " + prize : 
+                    "Это правильный ответ!\nВаш выигрыш: " + prize);
+                } else{
+                    alert("К сожалению, это неверный ответ.\nИгра окончена!\nВаш выигрыш: " + prize);
+                    break;
+                }
+            } else {
+                alert("Игра остановлена!\nВаш выигрыш: " + prize);
+                break;
+            }  
+        }             
+    </script>
+<!-- </body>
+</html> -->

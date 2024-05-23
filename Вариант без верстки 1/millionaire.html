@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //         Игра «Кто хочет стать миллионером»
+        // • За каждый верный ответ назначается какая либо сумма.
+        // • Если пользователь ответил верно на 3 вопроса, сумма
+        // фиксируется, то есть не сгорает.
+        // • Если ответил не верно = игра должна завершаться.
+        // • После завершения игры отображаем сумму выигрыша.
+
+        function Question(question, answer_1, answer_2, answer_3, answer_4, answerRightIndex, reward) {
+            this.question = question; // вопрос
+            this.answer_1 = answer_1; // вариант 1
+            this.answer_2 = answer_2; // вариант 2
+            this.answer_3 = answer_3; // вариант 3 
+            this.answer_4 = answer_4; // вариант 4 
+            this.answerRightIndex = answerRightIndex; // индекс правильного ответа
+            this.reward = reward; // доступный размер приза при правильном ответе на данный вопрос
+        };
+
+        let question_1 = new Question(
+            "Кто был первым военным министром Российской империи?",
+            "Аракчеев",
+            "Барклай-де-Толли",
+            "Вязмитинов",
+            "Коновницын",
+            3,
+            1000);
+
+        let question_2 = new Question(
+            "Реки с каким названием нет на территории России?",
+            "Спина",
+            "Уста",
+            "Палец",
+            "Шея",
+            1,
+            5000);
+
+        let question_3 = new Question(
+            "Что Шекспир назвал «вкуснейшим из блюд в земном пиру»?",
+            "Опьянение",
+            "Любовь",
+            "Уединение",
+            "Сон",
+            4,
+            25000);
+
+        let question_4 = new Question(
+            "Кто из этих философов в 1864 году написал музыку на стихи А.С.Пушкина «Заклинание» и «Зимний вечер»?",
+            "Юнг",
+            "Ницше",
+            "Шопенгауэр",
+            "Гегель",
+            2,
+            125000);
+
+        let question_5 = new Question(
+            "С какой фигуры начинаются соревнования по городошному спорту?",
+            "Часовые",
+            "Артиллерия",
+            "Пушка",
+            "Пулемётное гнездо",
+            3,
+            250000);
+
+        let question_6 = new Question(
+            "Сколько раз в сутки подзаводят куранты Спасской башни Кремля?",
+            "Один",
+            "Два",
+            "Три",
+            "Четыре",
+            2,
+            500000);
+
+        let question_7 = new Question(
+            "Как назвали первую кимберлитовую трубку, открытую Ларисой Попугаевой 21 августа 1954 года ?",
+            "«Советская»",
+            "«Зарница»",
+            "«Удачная»",
+            "«Мир»",
+            2,
+            1000000);
+
+        // добавляем вопросы в массив
+        let questions = [question_1, question_2, question_3, question_4, question_5, question_6, question_7];
+        // правильные ответы(для тестов): 
+        // console.log(3,1,4,2,3,2,2);
+
+        let prize = 0; // выигрыш пользователя
+
+        game(); // запуск игры
+
+        function game() { // игра началась 
+            for (let i = 0; i < questions.length; i++) { // обходим массив с вопросами
+                let answer = getAnswer(questions[i]); // получаем ответ пользователя на вопрос
+                if (answer == questions[i].answerRightIndex) { // в случае верного ответа
+                    if (i == 2) { // если это был 3ий вопрос
+                        prize = questions[i].reward;
+                        alert(`Достигнута несгораемая сумма ${prize}`);
+                    } else if (i == questions.length - 1) { // если вопрос последний
+                        prize = questions[i].reward;
+                        alert(`Поздравляем, Вы - миллионер!\nНе забудьте заплатить налог`);
+                        endGame();
+                        break;
+                    }
+                } else if (answer == -1) { // если пользователь решил завершить игру и/или забрать приз, введя "-1"
+                    prize = i > 0 ? questions[i - 1].reward : 0;
+                    endGame();
+                    break;
+
+                } else { // если ответ был неправильный или некорректный (не цифра от 1 до 4)
+                    endGame();
+                    break;
+                }
+            }
+        }
+
+        function getAnswer(question) { // вывод вопроса и получение ответа от пользователя
+            return prompt(`Завершить игру: -1\n${question.question}\n1) ${question.answer_1}\n2) ${question.answer_2}\n` +
+                `3) ${question.answer_3}\n4) ${question.answer_4}\nВыберите ответ, введя соответствующую цифру от 1 до 4:`);
+        }
+
+        function endGame() { // конец игры
+            alert(`Выигрыш составил ${prize}`);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
