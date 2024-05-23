@@ -1,0 +1,33 @@
+<script>
+    let masfoto = ["https://vsegda-pomnim.com/uploads/posts/2022-04/1649672981_7-vsegda-pomnim-com-p-tsveti-krasnogo-tsveta-foto-8.jpg",
+"https://catherineasquithgallery.com/uploads/posts/2021-02/1613035039_51-p-oranzhevie-tsveti-fon-71.jpg",
+"https://vsegda-pomnim.com/uploads/posts/2022-04/1649727313_65-vsegda-pomnim-com-p-zheltie-letnie-tsveti-foto-74.jpg",
+"https://vsegda-pomnim.com/uploads/posts/2022-04/1649728402_30-vsegda-pomnim-com-p-zelenie-tsveti-foto-33.jpg",
+"https://proprikol.ru/wp-content/uploads/2020/03/goluboj-czvet-krasivye-kartinki-29.jpg",
+"https://vsegda-pomnim.com/uploads/posts/2022-04/1649758912_20-vsegda-pomnim-com-p-sinie-tsveti-foto-24.jpg",
+"https://vsegda-pomnim.com/uploads/posts/2022-04/1649817904_85-vsegda-pomnim-com-p-fioletovie-tsveti-foto-91.jpg"];
+    let i = 0;
+    let foto;
+
+    window.onload = function(){
+
+        setInterval(function(){
+            foto = `url(${masfoto[i]})`;
+            var div = document.getElementById("container");
+            div.style.backgroundImage = foto;
+            div.style.height = "100%";
+            div.style.backgroundRepeat="no-repeat";
+            div.style.backgroundSize="cover";
+            i++;
+            if (i==masfoto.length){
+                i=0;
+            }
+        },3000);
+    }
+</script>
+
+<html>
+<body>
+    <div id="container" ></div>
+</body>
+</html>
